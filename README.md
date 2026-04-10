@@ -6,13 +6,15 @@ This project implements the required three-part socket programming system:
 - A UDP real-time video streaming server
 - A client that resolves the server domain first, then starts video streaming
 
-## Files
+## Project Layout
 
-- `dns_protocol.py`: Shared binary message format for DNS requests and responses
-- `dns_server.py`: TCP DNS resolver using `send()` and `recv()`
-- `video_server.py`: UDP webcam streamer using `sendto()`
-- `client.py`: Integrated client using DNS over TCP and video reception over UDP
-- `dns_records.txt`: Domain to IP mappings
+- `client.py`: Top-level client entry point
+- `dns_server.py`: Top-level DNS server entry point
+- `video_server.py`: Top-level video server entry point
+- `dns_protocol.py`: Compatibility import for the shared DNS protocol
+- `streaming_system/`: Core application package
+- `config/dns_records.txt`: Domain to IP mappings
+- `docs/STRUCTURE.md`: Folder structure overview
 
 ## Requirements
 
@@ -44,6 +46,14 @@ Start the client:
 
 ```powershell
 python client.py --domain video.server.com
+```
+
+You can also run the packaged modules directly:
+
+```powershell
+python -m streaming_system.dns.server
+python -m streaming_system.video.server
+python -m streaming_system.video.client --domain video.server.com
 ```
 
 ## Expected Output
