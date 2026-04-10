@@ -512,17 +512,6 @@ The system was tested locally on the same machine using loopback IP `127.0.0.1`.
 
 The same design can be adapted to multiple machines on the same network by changing the DNS mapping IP address and binding interfaces appropriately.
 
-## Submission Notes
-
-Important points to mention during demonstration or viva:
-
-- DNS communication is implemented over TCP
-- Video streaming is implemented over UDP
-- The client starts streaming only after successful DNS resolution
-- The server uses keep-alive timeout logic of 200 milliseconds
-- JPG compression is used to reduce bandwidth
-- Packet loss is handled by skipping incomplete frames
-
 ## References
 
 The following references were used during implementation and understanding:
