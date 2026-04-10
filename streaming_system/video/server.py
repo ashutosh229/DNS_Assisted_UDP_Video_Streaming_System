@@ -16,7 +16,10 @@ def wait_for_client(
 ) -> tuple[str, int] | None:
     print("Waiting for a client keep-alive...")
     while True:
-        data, address = server_socket.recvfrom(1024)
+        try:
+            data, address = server_socket.recvfrom(1024)
+        except TimeoutError:
+            continue
         if data == KEEPALIVE_MESSAGE:
             print(f"Streaming client registered: {address[0]}:{address[1]}")
             return address
