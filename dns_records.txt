@@ -1,0 +1,6 @@
+# domain_name ip_address
+video.server.com 127.0.0.1
+cam.lab.local 127.0.0.1
+stream.node.net 127.0.0.1
+media.gateway.org 127.0.0.1
+demo.video.host 127.0.0.1
