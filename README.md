@@ -254,19 +254,19 @@ The following assignment constraints are followed by the implementation.
 
 ### Use Only Socket Programming
 
-Complied with. The application uses Python's low-level `socket` module directly.
+The application uses Python's low-level `socket` module directly.
 
 ### TCP for DNS Communication
 
-Complied with. The DNS server and DNS client logic use TCP sockets.
+The DNS server and DNS client logic use TCP sockets.
 
 ### UDP for Video Streaming
 
-Complied with. The video server and client use UDP sockets for frame transmission and keep-alive messaging.
+The video server and client use UDP sockets for frame transmission and keep-alive messaging.
 
 ### Use Basic Primitives Only
 
-Complied with. Communication uses socket operations such as:
+Communication uses socket operations such as:
 
 - `sendall()`
 - `recv()`
@@ -277,7 +277,7 @@ No high-level networking or messaging framework is used.
 
 ### No Wrapper-Based Networking APIs
 
-Complied with. The project does not use messaging middleware, RPC frameworks, HTTP streaming libraries, or other abstraction layers over sockets.
+The project does not use messaging middleware, RPC frameworks, HTTP streaming libraries, or other abstraction layers over sockets.
 
 ## Tech Stack
 
