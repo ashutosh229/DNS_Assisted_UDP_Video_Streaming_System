@@ -19,7 +19,9 @@ PACKET_HEADER = struct.Struct("!I H H d")
 def resolve_domain(
     dns_host: str, dns_port: int, domain_name: str, transaction_id: int | None = None
 ) -> str:
-    request_id = transaction_id if transaction_id is not None else random.randint(0, 65535)
+    request_id = (
+        transaction_id if transaction_id is not None else random.randint(0, 65535)
+    )
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as dns_socket:
         dns_socket.connect((dns_host, dns_port))
         dns_socket.sendall(build_dns_request(request_id, domain_name))
@@ -44,7 +46,9 @@ def keepalive_loop(
         time.sleep(interval_s)
 
 
-def run_video_client(server_ip: str, server_port: int, keepalive_interval_ms: int) -> None:
+def run_video_client(
+    server_ip: str, server_port: int, keepalive_interval_ms: int
+) -> None:
     server_address = (server_ip, server_port)
     stop_event = threading.Event()
 
@@ -136,7 +140,9 @@ def parse_args() -> argparse.Namespace:
         help="Domain name to resolve through the custom DNS server",
     )
     parser.add_argument("--dns-host", default="127.0.0.1", help="DNS server host")
-    parser.add_argument("--dns-port", type=int, default=53535, help="DNS server TCP port")
+    parser.add_argument(
+        "--dns-port", type=int, default=53535, help="DNS server TCP port"
+    )
     parser.add_argument(
         "--video-port", type=int, default=5005, help="Video server UDP port"
     )

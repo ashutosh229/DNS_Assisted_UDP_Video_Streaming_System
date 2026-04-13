@@ -27,10 +27,6 @@ This separates the name-resolution phase from the media-delivery phase and demon
 - TCP for reliable DNS-style request/response exchange
 - UDP for low-latency real-time media transmission
 
-## Problem Statement
-
-Design and implement an application using socket programming where a client first resolves a server's domain name using a custom DNS resolver over TCP and then uses the resolved IP address to establish a UDP-based real-time video streaming session.
-
 ## System Description
 
 The system consists of the following three modules:
@@ -289,7 +285,6 @@ Complied with. The project does not use messaging middleware, RPC frameworks, HT
 - Networking: Python `socket` module
 - Video Capture and Encoding: OpenCV (`cv2`)
 - Byte Buffer Handling: NumPy
-- Development Environment: Windows / terminal-based execution
 
 ## Implementation Details
 
@@ -336,22 +331,14 @@ This allows the client to:
 
 ### Clone / Open the Repository
 
-If the repository is already available locally, open the project folder in your terminal.
+If the repository is already available locally, open the project folder in your terminal or clone the git repository in case the folder is not available.
 
 ```powershell
+git clone https://github.com/ashutosh229/DNS_Assisted_UDP_Video_Streaming_System.git
 cd DNS_Assisted_UDP_Video_Streaming_System
 ```
 
 ### Create and Activate a Virtual Environment
-
-### Windows PowerShell
-
-```powershell
-python -m venv venv
-.\venv\Scripts\Activate.ps1
-```
-
-### Git Bash on Windows
 
 ```bash
 python -m venv venv
@@ -360,7 +347,7 @@ source venv/Scripts/activate
 
 ### Install Dependencies
 
-```powershell
+```bash
 pip install -r requirements.txt
 ```
 
@@ -370,7 +357,7 @@ Open three terminals in the project root.
 
 ### Step 1. Start the DNS Server
 
-```powershell
+```bash
 python dns_server.py
 ```
 
@@ -381,7 +368,7 @@ Expected behavior:
 
 ### Step 2. Start the Video Streaming Server
 
-```powershell
+```bash
 python video_server.py
 ```
 
@@ -393,7 +380,7 @@ Expected behavior:
 
 ### Step 3. Start the Client
 
-```powershell
+```bash
 python client.py --domain video.server.com
 ```
 
@@ -408,7 +395,7 @@ Expected behavior:
 
 The same application can also be started using the package modules:
 
-```powershell
+```bash
 python -m streaming_system.dns.server
 python -m streaming_system.video.server
 python -m streaming_system.video.client --domain video.server.com
@@ -430,7 +417,7 @@ The application was tested successfully with the following observed outcomes:
 - Live latency was shown on the client window
 - The client performed DNS resolution before starting streaming, satisfying the integration requirement
 
-### Sample Console Output
+### Terminal Output
 
 #### DNS Server
 
@@ -455,62 +442,6 @@ Streaming client registered: 127.0.0.1:64389
 Domain: video.server.com
 IP Address: 127.0.0.1
 ```
-
-## Screenshot Placeholders
-
-Add screenshots below before final submission.
-
-### Screenshot 1: Project Folder Structure
-
-Place project structure screenshot here.
-
-`[Insert screenshot of project files and folders]`
-
-### Screenshot 2: DNS Server Running
-
-Place DNS server terminal screenshot here.
-
-`[Insert screenshot of DNS server terminal output]`
-
-### Screenshot 3: Video Server Running
-
-Place video server terminal screenshot here.
-
-`[Insert screenshot of video server terminal output]`
-
-### Screenshot 4: Client Terminal Output
-
-Place client terminal screenshot here.
-
-`[Insert screenshot of client terminal output showing resolved domain and IP]`
-
-### Screenshot 5: Live Video Window
-
-Place client GUI screenshot here.
-
-`[Insert screenshot showing live streamed video and latency overlay]`
-
-### Screenshot 6: Code Snapshot
-
-Place key code screenshots here.
-
-`[Insert screenshot of DNS logic code]`
-
-`[Insert screenshot of UDP video streaming code]`
-
-`[Insert screenshot of client integration code]`
-
-## Testing Notes
-
-The system was tested locally on the same machine using loopback IP `127.0.0.1`. This is valid for demonstrating:
-
-- DNS resolution
-- UDP frame delivery
-- Client/server integration
-- Keep-alive operation
-- Real-time display logic
-
-The same design can be adapted to multiple machines on the same network by changing the DNS mapping IP address and binding interfaces appropriately.
 
 ## References
 
