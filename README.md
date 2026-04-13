@@ -27,10 +27,6 @@ This separates the name-resolution phase from the media-delivery phase and demon
 - TCP for reliable DNS-style request/response exchange
 - UDP for low-latency real-time media transmission
 
-## Problem Statement
-
-Design and implement an application using socket programming where a client first resolves a server's domain name using a custom DNS resolver over TCP and then uses the resolved IP address to establish a UDP-based real-time video streaming session.
-
 ## System Description
 
 The system consists of the following three modules:
@@ -258,19 +254,19 @@ The following assignment constraints are followed by the implementation.
 
 ### Use Only Socket Programming
 
-Complied with. The application uses Python's low-level `socket` module directly.
+The application uses Python's low-level `socket` module directly.
 
 ### TCP for DNS Communication
 
-Complied with. The DNS server and DNS client logic use TCP sockets.
+The DNS server and DNS client logic use TCP sockets.
 
 ### UDP for Video Streaming
 
-Complied with. The video server and client use UDP sockets for frame transmission and keep-alive messaging.
+The video server and client use UDP sockets for frame transmission and keep-alive messaging.
 
 ### Use Basic Primitives Only
 
-Complied with. Communication uses socket operations such as:
+Communication uses socket operations such as:
 
 - `sendall()`
 - `recv()`
@@ -281,7 +277,7 @@ No high-level networking or messaging framework is used.
 
 ### No Wrapper-Based Networking APIs
 
-Complied with. The project does not use messaging middleware, RPC frameworks, HTTP streaming libraries, or other abstraction layers over sockets.
+The project does not use messaging middleware, RPC frameworks, HTTP streaming libraries, or other abstraction layers over sockets.
 
 ## Tech Stack
 
